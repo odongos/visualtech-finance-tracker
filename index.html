@@ -3113,6 +3113,18 @@
                     </div>
                 </div>
 
+                <!-- GitHub Sync Button -->
+                <button id="ghSyncBtn" onclick="GitHubStorage.openSettings()" title="GitHub Sync Settings" style="
+                    background:var(--surface);border:1.5px solid var(--border);
+                    color:var(--text-2);padding:8px 13px;border-radius:var(--radius-sm);
+                    cursor:pointer;font-size:0.85rem;font-weight:500;font-family:inherit;
+                    display:flex;align-items:center;gap:6px;transition:all var(--transition);white-space:nowrap;
+                ">
+                    <i class="fab fa-github"></i>
+                    <span class="btn-label" id="ghSyncLabel">GitHub Sync</span>
+                    <span id="ghSyncDot" style="display:none;width:8px;height:8px;border-radius:50%;background:var(--text-3);flex-shrink:0;"></span>
+                </button>
+
                 <!-- Session Timer + Logout -->
                 <div id="sessionInfoWrap" style="display:flex;align-items:center;gap:8px;">
                     <div id="sessionTimerBadge" title="Auto-logout countdown" style="
@@ -3904,6 +3916,100 @@
                         <button class="btn-cancel-edit" style="flex:0 0 auto;width:auto;padding:10px 18px;" onclick="document.getElementById('contributeModal').classList.remove('active')">Cancel</button>
                         <button class="btn-submit" style="margin:0;" id="saveContributeBtn"><i class="fas fa-check"></i> Add</button>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Sync Modal -->
+        <div id="ghModal" class="modal">
+            <div class="modal-content" style="max-width:500px;">
+                <div class="modal-header">
+                    <h2><i class="fab fa-github"></i> GitHub Sync Settings</h2>
+                    <button class="close-modal" id="closeGhModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <!-- Status banner -->
+                    <div id="ghStatusBanner" style="display:none;padding:10px 14px;border-radius:10px;margin-bottom:16px;font-size:0.83rem;font-weight:500;display:none;align-items:center;gap:8px;"></div>
+
+                    <p style="font-size:0.85rem;color:var(--text-2);margin-bottom:18px;line-height:1.6;">
+                        Your data will be saved as <code style="background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:0.8rem;">visualtech-data.json</code> in your GitHub repository. Every change syncs automatically.
+                    </p>
+
+                    <div class="form-group">
+                        <label style="font-size:0.82rem;font-weight:600;color:var(--text-2);display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                            <i class="fas fa-user" style="color:var(--primary);"></i> GitHub Username / Owner
+                        </label>
+                        <input type="text" id="ghOwner" placeholder="e.g. johndoe" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;transition:border-color 0.2s;">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size:0.82rem;font-weight:600;color:var(--text-2);display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                            <i class="fas fa-database" style="color:var(--primary);"></i> Repository Name
+                        </label>
+                        <input type="text" id="ghRepo" placeholder="e.g. visualtech-finance-data" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;transition:border-color 0.2s;">
+                        <small style="color:var(--text-3);font-size:0.75rem;margin-top:4px;display:block;">The repo must exist and be accessible with your token. Can be private.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size:0.82rem;font-weight:600;color:var(--text-2);display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                            <i class="fas fa-code-branch" style="color:var(--primary);"></i> Branch
+                        </label>
+                        <input type="text" id="ghBranch" placeholder="main" value="main" style="width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-family:inherit;font-size:0.9rem;outline:none;transition:border-color 0.2s;">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-size:0.82rem;font-weight:600;color:var(--text-2);display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                            <i class="fas fa-key" style="color:var(--primary);"></i> Personal Access Token
+                            <a href="https://github.com/settings/tokens/new?scopes=repo&description=VisualTech+Finance" target="_blank" style="font-size:0.72rem;color:var(--primary);margin-left:auto;font-weight:400;">Generate token →</a>
+                        </label>
+                        <div style="position:relative;">
+                            <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="width:100%;padding:10px 42px 10px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font-family:'DM Mono',monospace;font-size:0.85rem;outline:none;transition:border-color 0.2s;">
+                            <button type="button" onclick="const i=document.getElementById('ghToken');i.type=i.type==='password'?'text':'password'" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-3);cursor:pointer;font-size:0.85rem;padding:4px;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <small style="color:var(--text-3);font-size:0.75rem;margin-top:4px;display:block;">Needs <strong>repo</strong> scope. Stored only in your browser's localStorage — never sent anywhere except GitHub.</small>
+                    </div>
+
+                    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+                        <button id="ghTestBtn" onclick="GitHubStorage.testConnection()" style="
+                            padding:10px 18px;background:var(--surface2);color:var(--text-2);
+                            border:1.5px solid var(--border);border-radius:var(--radius-sm);
+                            font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;
+                            display:flex;align-items:center;gap:6px;transition:all 0.2s;
+                        ">
+                            <i class="fas fa-plug"></i> Test Connection
+                        </button>
+                        <button id="ghSaveSettingsBtn" onclick="GitHubStorage.saveSettings()" style="
+                            flex:1;padding:10px 18px;
+                            background:linear-gradient(135deg,#24292e,#444d56);
+                            color:white;border:none;border-radius:var(--radius-sm);
+                            font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;
+                            display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;
+                        ">
+                            <i class="fab fa-github"></i> Save & Enable Sync
+                        </button>
+                    </div>
+
+                    <div id="ghDisableRow" style="display:none;margin-top:12px;text-align:center;">
+                        <button onclick="GitHubStorage.disable()" style="background:none;border:none;color:var(--expense);font-size:0.78rem;cursor:pointer;text-decoration:underline;">
+                            Disable GitHub Sync
+                        </button>
+                    </div>
+
+                    <!-- How-to steps -->
+                    <details style="margin-top:20px;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;">
+                        <summary style="font-size:0.82rem;font-weight:600;color:var(--text-2);cursor:pointer;user-select:none;">
+                            <i class="fas fa-question-circle" style="color:var(--primary);margin-right:5px;"></i> How to set this up
+                        </summary>
+                        <ol style="margin-top:12px;padding-left:18px;font-size:0.8rem;color:var(--text-2);line-height:2;">
+                            <li>Go to <strong>github.com/settings/tokens/new</strong></li>
+                            <li>Give it a name (e.g. VisualTech Finance) and tick <strong>repo</strong> scope</li>
+                            <li>Click <strong>Generate token</strong> and copy it</li>
+                            <li>Create a new GitHub repository (can be private)</li>
+                            <li>Fill in the fields above and click <strong>Save & Enable Sync</strong></li>
+                        </ol>
+                    </details>
                 </div>
             </div>
         </div>
@@ -7693,6 +7799,7 @@
                 KPIDashboard.refresh();
                 BudgetLimits.render();
                 BudgetLimits.check();
+                GitHubStorage.schedulePush();
             };
 
             // Patch deleteTransaction for audit
@@ -7703,8 +7810,289 @@
                 _origDel.call(this, id);
                 if(tx) AuditLog.log('delete', `Deleted: ${tx.description}`, `${tx.type}`, `${tx.amount} ${tx.currency||''}`);
                 KPIDashboard.refresh(); BudgetLimits.render();
+                GitHubStorage.schedulePush();
             };
         })();
+
+        /* ═══════════════════════════════════════════════
+           GITHUB STORAGE — Save data to GitHub repo
+        ═══════════════════════════════════════════════ */
+        window.GitHubStorage = {
+            // All localStorage keys that make up app data
+            DATA_KEYS: [
+                'financeTransactions','financeProject','financeExchangeRates',
+                'financeBaseCurrency','fpStore','fpCurrentProject',
+                'vtBudgetLimits','vtSavingsGoals','vtRecurring',
+                'vtAuditLog','vtNotifications','financeTheme'
+            ],
+            CONFIG_KEY: 'vtGitHubConfig',
+            FILE_PATH: 'visualtech-data.json',
+            _pushTimer: null,
+            _sha: null,        // current file SHA — required for updates
+            _enabled: false,
+
+            /* ── Config helpers ── */
+            getConfig() {
+                try { return JSON.parse(localStorage.getItem(this.CONFIG_KEY) || 'null'); } catch { return null; }
+            },
+            saveConfig(cfg) { localStorage.setItem(this.CONFIG_KEY, JSON.stringify(cfg)); },
+
+            /* ── Collect all app data into one object ── */
+            _collectData() {
+                const obj = { _savedAt: new Date().toISOString() };
+                this.DATA_KEYS.forEach(k => {
+                    const v = localStorage.getItem(k);
+                    if (v !== null) obj[k] = v; // store as raw strings; avoids double-parse
+                });
+                return obj;
+            },
+
+            /* ── Restore data from GitHub object into localStorage ── */
+            _restoreData(obj) {
+                this.DATA_KEYS.forEach(k => {
+                    if (obj[k] !== undefined) localStorage.setItem(k, obj[k]);
+                });
+            },
+
+            /* ── GitHub API: fetch file ── */
+            async _fetchFile(cfg) {
+                const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${this.FILE_PATH}?ref=${cfg.branch}&t=${Date.now()}`;
+                const res = await fetch(url, { headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' } });
+                if (res.status === 404) return null;       // file doesn't exist yet — OK
+                if (!res.ok) throw new Error(`GitHub fetch failed: ${res.status} ${res.statusText}`);
+                return await res.json();
+            },
+
+            /* ── GitHub API: push file ── */
+            async _pushFile(cfg, content, sha) {
+                const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${this.FILE_PATH}`;
+                const body = {
+                    message: `VisualTech data sync — ${new Date().toLocaleString()}`,
+                    content: btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2)))),
+                    branch: cfg.branch
+                };
+                if (sha) body.sha = sha;
+                const res = await fetch(url, {
+                    method: 'PUT',
+                    headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    throw new Error(err.message || `GitHub push failed: ${res.status}`);
+                }
+                const data = await res.json();
+                return data.content?.sha || sha;
+            },
+
+            /* ── Pull: fetch from GitHub → localStorage ── */
+            async pull() {
+                const cfg = this.getConfig(); if (!cfg) return;
+                this._setStatus('syncing', 'Pulling from GitHub…');
+                try {
+                    const file = await this._fetchFile(cfg);
+                    if (file) {
+                        this._sha = file.sha;
+                        const decoded = decodeURIComponent(escape(atob(file.content.replace(/\s/g,''))));
+                        const obj = JSON.parse(decoded);
+                        this._restoreData(obj);
+                        this._setStatus('ok', `Synced · ${new Date(obj._savedAt).toLocaleTimeString()}`);
+                        // Refresh all UI
+                        if (window.financeTracker) {
+                            window.financeTracker.transactions = JSON.parse(localStorage.getItem('financeTransactions') || '[]');
+                            window.financeTracker.renderTransactions();
+                            window.financeTracker.updateSummary();
+                            window.financeTracker.renderCharts();
+                            window.financeTracker.updateProjectDisplay();
+                        }
+                        BudgetLimits.load(); BudgetLimits.render();
+                        SavingsGoals.load(); SavingsGoals.render();
+                        RecurringManager.load(); RecurringManager.render();
+                        AuditLog.load(); AuditLog.render();
+                        KPIDashboard.refresh();
+                    } else {
+                        // No file yet — push current local data
+                        await this.push();
+                    }
+                } catch(e) {
+                    this._setStatus('error', 'Pull failed: ' + e.message);
+                    console.error('GitHub pull error:', e);
+                }
+            },
+
+            /* ── Push: localStorage → GitHub ── */
+            async push() {
+                const cfg = this.getConfig(); if (!cfg) return;
+                this._setStatus('syncing', 'Saving to GitHub…');
+                try {
+                    // Always fetch current SHA before pushing to avoid conflicts
+                    if (!this._sha) {
+                        const file = await this._fetchFile(cfg);
+                        if (file) this._sha = file.sha;
+                    }
+                    const data = this._collectData();
+                    this._sha = await this._pushFile(cfg, data, this._sha);
+                    this._setStatus('ok', `Saved · ${new Date().toLocaleTimeString()}`);
+                } catch(e) {
+                    // If conflict (SHA mismatch), re-fetch SHA and retry once
+                    if (e.message && e.message.includes('422')) {
+                        try {
+                            const file = await this._fetchFile(this.getConfig());
+                            if (file) { this._sha = file.sha; await this.push(); return; }
+                        } catch {}
+                    }
+                    this._setStatus('error', 'Save failed: ' + e.message);
+                    console.error('GitHub push error:', e);
+                }
+            },
+
+            /* ── Debounced push — called after every data change ── */
+            schedulePush() {
+                if (!this._enabled) return;
+                clearTimeout(this._pushTimer);
+                this._pushTimer = setTimeout(() => this.push(), 2000); // 2s debounce
+            },
+
+            /* ── Status indicator on the sync button ── */
+            _setStatus(state, msg) {
+                const dot = document.getElementById('ghSyncDot');
+                const lbl = document.getElementById('ghSyncLabel');
+                const btn = document.getElementById('ghSyncBtn');
+                if (!dot) return;
+                dot.style.display = 'inline-block';
+                if (state === 'ok')      { dot.style.background = 'var(--income)'; if(btn) btn.title = msg; }
+                else if (state === 'syncing') { dot.style.background = 'var(--warning)'; dot.style.animation = 'pulse 1s infinite'; }
+                else if (state === 'error')   { dot.style.background = 'var(--expense)'; if(btn) btn.title = msg; }
+                if (state !== 'syncing') dot.style.animation = '';
+                if (lbl) lbl.textContent = state === 'ok' ? 'Synced' : state === 'error' ? 'Sync Error' : 'Syncing…';
+                // Also update modal banner if open
+                const banner = document.getElementById('ghStatusBanner');
+                if (banner) {
+                    const colors = { ok: ['rgba(0,184,122,0.1)','rgba(0,184,122,0.3)','var(--income)','fa-check-circle'],
+                                     syncing: ['rgba(245,158,11,0.1)','rgba(245,158,11,0.3)','var(--warning)','fa-sync fa-spin'],
+                                     error: ['rgba(240,62,62,0.1)','rgba(240,62,62,0.3)','var(--expense)','fa-exclamation-circle'] };
+                    const [bg,border,color,icon] = colors[state] || colors.error;
+                    banner.style.cssText = `display:flex;padding:10px 14px;border-radius:10px;margin-bottom:16px;font-size:0.83rem;font-weight:500;align-items:center;gap:8px;background:${bg};border:1px solid ${border};color:${color};`;
+                    banner.innerHTML = `<i class="fas ${icon}"></i> ${msg}`;
+                }
+            },
+
+            /* ── Test connection ── */
+            async testConnection() {
+                const cfg = this._readForm(); if (!cfg) return;
+                this._setStatus('syncing', 'Testing…');
+                document.getElementById('ghStatusBanner').style.display = 'flex';
+                try {
+                    const url = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}`;
+                    const res = await fetch(url, { headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' } });
+                    if (!res.ok) throw new Error(`Repo not found or no access (${res.status})`);
+                    const data = await res.json();
+                    this._setStatus('ok', `✓ Connected to "${data.full_name}" (${data.private ? 'private' : 'public'})`);
+                } catch(e) {
+                    this._setStatus('error', 'Connection failed: ' + e.message);
+                }
+            },
+
+            /* ── Read form values ── */
+            _readForm() {
+                const owner = document.getElementById('ghOwner')?.value.trim();
+                const repo  = document.getElementById('ghRepo')?.value.trim();
+                const branch = document.getElementById('ghBranch')?.value.trim() || 'main';
+                const token = document.getElementById('ghToken')?.value.trim();
+                if (!owner || !repo || !token) {
+                    this._setStatus('error', 'Please fill in all fields.');
+                    document.getElementById('ghStatusBanner').style.display = 'flex';
+                    return null;
+                }
+                return { owner, repo, branch, token };
+            },
+
+            /* ── Save settings and enable sync ── */
+            async saveSettings() {
+                const cfg = this._readForm(); if (!cfg) return;
+                this.saveConfig(cfg);
+                this._sha = null;
+                this._enabled = true;
+                this._updateDisableRow();
+                document.getElementById('ghModal').classList.remove('active');
+                await this.pull(); // pull first to load any existing remote data
+                this.patchAllSaves(); // hook saves
+            },
+
+            /* ── Disable sync ── */
+            disable() {
+                if (!confirm('Disable GitHub sync? Your local data remains intact.')) return;
+                localStorage.removeItem(this.CONFIG_KEY);
+                this._enabled = false;
+                const dot = document.getElementById('ghSyncDot');
+                const lbl = document.getElementById('ghSyncLabel');
+                if (dot) dot.style.display = 'none';
+                if (lbl) lbl.textContent = 'GitHub Sync';
+                document.getElementById('ghModal').classList.remove('active');
+            },
+
+            /* ── Open settings modal ── */
+            openSettings() {
+                const cfg = this.getConfig() || {};
+                document.getElementById('ghOwner').value = cfg.owner || '';
+                document.getElementById('ghRepo').value = cfg.repo || '';
+                document.getElementById('ghBranch').value = cfg.branch || 'main';
+                document.getElementById('ghToken').value = cfg.token || '';
+                document.getElementById('ghStatusBanner').style.display = 'none';
+                this._updateDisableRow();
+                document.getElementById('ghModal').classList.add('active');
+            },
+
+            _updateDisableRow() {
+                const row = document.getElementById('ghDisableRow');
+                if (row) row.style.display = this.getConfig() ? 'block' : 'none';
+            },
+
+            /* ── Patch all module .save() methods to call schedulePush ── */
+            patchAllSaves() {
+                const modules = [BudgetLimits, SavingsGoals, RecurringManager, AuditLog, NotificationCenter];
+                modules.forEach(m => {
+                    if (m && typeof m.save === 'function') {
+                        const origSave = m.save.bind(m);
+                        m.save = function() { origSave(); GitHubStorage.schedulePush(); };
+                    }
+                });
+                // Also patch FinanceTracker's saveTransactions
+                if (window.financeTracker) {
+                    const origSave = window.financeTracker.saveTransactions?.bind(window.financeTracker);
+                    if (origSave) {
+                        window.financeTracker.saveTransactions = function() { origSave(); GitHubStorage.schedulePush(); };
+                    }
+                }
+            },
+
+            /* ── Init: if config exists, auto-enable sync ── */
+            async init() {
+                // Add pulse keyframe if not there
+                if (!document.getElementById('ghPulseStyle')) {
+                    const s = document.createElement('style'); s.id = 'ghPulseStyle';
+                    s.textContent = '@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}';
+                    document.head.appendChild(s);
+                }
+                document.getElementById('closeGhModal').addEventListener('click', () => document.getElementById('ghModal').classList.remove('active'));
+                const cfg = this.getConfig();
+                if (cfg) {
+                    this._enabled = true;
+                    this._updateDisableRow();
+                    this._setStatus('syncing', 'Syncing with GitHub…');
+                    await this.pull();
+                    this.patchAllSaves();
+                } else {
+                    const lbl = document.getElementById('ghSyncLabel');
+                    if (lbl) lbl.textContent = 'GitHub Sync';
+                }
+            }
+        };
+
+        // Add GitHubStorage.init() to the DOMContentLoaded chain
+        document.addEventListener('DOMContentLoaded', () => {
+            GitHubStorage.init();
+        });
     </script>
 
     <!-- Admin Auth Modal -->
