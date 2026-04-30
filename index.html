@@ -5032,6 +5032,7 @@
                 if (!t) return;
                 t.memberId = memberId || '';
                 this.saveToLocalStorage();
+                if (window.GitHubStorage) GitHubStorage.schedulePush();
 
                 // Update select visual without full re-render
                 const team = (window.pfm ? pfm.proj.team : null) || [];
@@ -7777,12 +7778,14 @@
 
                 _orig.call(this);
 
-                // After original runs, grab the new tx (first in array)
-                const txs = JSON.parse(localStorage.getItem('financeTransactions')||'[]');
-                const newTx = txs[0];
+                // After original runs, the new tx is first in this.transactions (in-memory)
+                const newTx = this.transactions[0];
 
-                // Tag tax deductible
-                if (newTx && taxOk) { newTx.taxDeductible = true; txs[0]=newTx; localStorage.setItem('financeTransactions', JSON.stringify(txs)); }
+                // Tag tax deductible — write through the object then save properly
+                if (newTx && taxOk) {
+                    newTx.taxDeductible = true;
+                    this.saveToLocalStorage();
+                }
 
                 // Audit log
                 if (!isEdit) { AuditLog.log('create', desc||'Transaction', `${type} / ${cat}`, `${amt} ${cur}`); }
@@ -8057,11 +8060,11 @@
                         m.save = function() { origSave(); GitHubStorage.schedulePush(); };
                     }
                 });
-                // Also patch FinanceTracker's saveTransactions
+                // Also patch FinanceTracker's saveToLocalStorage (the actual save method)
                 if (window.financeTracker) {
-                    const origSave = window.financeTracker.saveTransactions?.bind(window.financeTracker);
+                    const origSave = window.financeTracker.saveToLocalStorage?.bind(window.financeTracker);
                     if (origSave) {
-                        window.financeTracker.saveTransactions = function() { origSave(); GitHubStorage.schedulePush(); };
+                        window.financeTracker.saveToLocalStorage = function() { origSave(); GitHubStorage.schedulePush(); };
                     }
                 }
             },
