@@ -1,0 +1,739 @@
+{
+  "settings": {
+    "companyName": "Visualtech Solutions",
+    "companyAddress": "300 Digital Street, Suite 100, Kampala",
+    "companyPhone": "+256 700 409 2024",
+    "companyEmail": "billing@visualtech.com",
+    "companyWebsite": "www.visualtech.com",
+    "taxRate": 18,
+    "currency": "$",
+    "invoicePrefix": "INV",
+    "paymentTerms": 30,
+    "defaultNotes": "Payment due within 30 days of invoice date. Thank you for your business!",
+    "lpoTermsEnabled": true
+  },
+  "catalog": [
+    {
+      "id": 1,
+      "name": "4MP IP Dome Camera",
+      "description": "ELV CCTV, IR, PoE, vandal-proof",
+      "price": 185
+    },
+    {
+      "id": 2,
+      "name": "Biometric Access Control",
+      "description": "Fingerprint + RFID reader, ELV system",
+      "price": 320
+    },
+    {
+      "id": 3,
+      "name": "PIR Motion Sensor",
+      "description": "Ceiling mount, for lighting/security",
+      "price": 45.5
+    },
+    {
+      "id": 4,
+      "name": "Magnetic Door Lock (600lbs)",
+      "description": "ELV electromagnetic lock with bracket",
+      "price": 98
+    },
+    {
+      "id": 5,
+      "name": "Network Video Recorder (16ch)",
+      "description": "4K NVR, 2 HDD bays, PoE",
+      "price": 590
+    },
+    {
+      "id": 6,
+      "name": "24-Port Gigabit PoE Switch",
+      "description": "IT infra, 370W, managed layer2",
+      "price": 420
+    },
+    {
+      "id": 7,
+      "name": "Enterprise Wi-Fi 6 Access Point",
+      "description": "IT/network, high-density",
+      "price": 275
+    },
+    {
+      "id": 8,
+      "name": "1U Rackmount Server",
+      "description": "Intel Xeon, 32GB RAM, IT backend",
+      "price": 1850
+    },
+    {
+      "id": 9,
+      "name": "Guest Room Management Gateway",
+      "description": "GRMS central controller, energy mgmt",
+      "price": 890
+    },
+    {
+      "id": 10,
+      "name": "Smart RFID Door Lock",
+      "description": "GRMS compatible, mobile key ready",
+      "price": 210
+    },
+    {
+      "id": 11,
+      "name": "In-Room Thermostat",
+      "description": "GRMS HVAC control, occupancy sensor",
+      "price": 125
+    },
+    {
+      "id": 12,
+      "name": "Smart Curtain Motor",
+      "description": "Zigbee / dry contact, automation",
+      "price": 159
+    },
+    {
+      "id": 13,
+      "name": "Smart Home Hub",
+      "description": "Zigbee/Z-Wave, voice control ready",
+      "price": 220
+    },
+    {
+      "id": 14,
+      "name": "Dimmable Smart LED Bulb (4-pack)",
+      "description": "Tuneable white, home automation",
+      "price": 68
+    },
+    {
+      "id": 15,
+      "name": "4K Laser Projector",
+      "description": "AV, 5000 lumens, HDR, pro installation",
+      "price": 3450
+    },
+    {
+      "id": 16,
+      "name": "Commercial 75\" 4K Display",
+      "description": "AV signage, 24/7, RS232 control",
+      "price": 2100
+    },
+    {
+      "id": 17,
+      "name": "Line Array Speaker System",
+      "description": "AV, passive, 2x8\" + horn",
+      "price": 890
+    },
+    {
+      "id": 18,
+      "name": "Digital Matrix Switcher",
+      "description": "8x8 HDMI 2.0, HDCP 2.2, AV",
+      "price": 1275
+    },
+    {
+      "id": 19,
+      "name": "Wireless Conference Mic Kit",
+      "description": "AV collaboration, 4 mics + base",
+      "price": 650
+    },
+    {
+      "id": 20,
+      "name": "HDBaseT Extender (100m)",
+      "description": "AV extension with IR, PoC",
+      "price": 185
+    },
+    {
+      "id": 21,
+      "name": "Centralized Lighting Controller",
+      "description": "DALI / 0-10V, ELV automation",
+      "price": 490
+    },
+    {
+      "id": 22,
+      "name": "Videowall Controller",
+      "description": "AV, 4K multi-screen processor",
+      "price": 2340
+    },
+    {
+      "id": 23,
+      "name": "Rackmount UPS 1500VA",
+      "description": "IT power backup, line-interactive",
+      "price": 425
+    },
+    {
+      "id": 24,
+      "name": "Guest Room Energy Meter",
+      "description": "GRMS submeter, Modbus",
+      "price": 88
+    },
+    {
+      "id": 25,
+      "name": "IP Intercom Station",
+      "description": "ELV door entry, SIP/VoIP",
+      "price": 310
+    },
+    {
+      "id": 26,
+      "name": "IPTV Headend Server",
+      "description": "4K streaming, multi-channel transcoding",
+      "price": 2850
+    },
+    {
+      "id": 27,
+      "name": "IPTV Middleware License (100 rooms)",
+      "description": "Hotel TV portal, EPG, VOD",
+      "price": 4990
+    },
+    {
+      "id": 28,
+      "name": "4K HEVC Encoder (HDMI to IP)",
+      "description": "Low latency, multicast ABR",
+      "price": 1240
+    },
+    {
+      "id": 29,
+      "name": "Hospitality Smart TV 55\"",
+      "description": "Pro:Centric, RS232, hotel mode",
+      "price": 875
+    },
+    {
+      "id": 30,
+      "name": "TV Backend CMS Server",
+      "description": "Channel scheduling, asset management",
+      "price": 3450
+    },
+    {
+      "id": 31,
+      "name": "RF Modulator (DVB-T / ATSC)",
+      "description": "8 channels, HDMI/CVBS input",
+      "price": 890
+    },
+    {
+      "id": 32,
+      "name": "IP to QAM Gateway",
+      "description": "16 transmodulators, headend",
+      "price": 2175
+    },
+    {
+      "id": 33,
+      "name": "Android TV STB (4K)",
+      "description": "Hybrid IPTV/OTT, hotel launcher",
+      "price": 129
+    },
+    {
+      "id": 34,
+      "name": "Multicast Switch & IGMP Router",
+      "description": "IPTV network optimization",
+      "price": 560
+    },
+    {
+      "id": 35,
+      "name": "EPG & Scheduling Software",
+      "description": "TV guide automation",
+      "price": 1890
+    },
+    {
+      "id": 36,
+      "name": "Digital Signage IPTV Encoder",
+      "description": "Live TV distribution",
+      "price": 980
+    },
+    {
+      "id": 37,
+      "name": "GRMS Central Server",
+      "description": "Full room control, PMS integration",
+      "price": 4190
+    },
+    {
+      "id": 38,
+      "name": "Room Control Unit (RCU)",
+      "description": "Lighting, HVAC, curtain, energy",
+      "price": 325
+    },
+    {
+      "id": 39,
+      "name": "In-Room Tablet (8\" wall mount)",
+      "description": "GRMS interface, guest services",
+      "price": 445
+    },
+    {
+      "id": 40,
+      "name": "Door Status & Privacy Sensor",
+      "description": "Magnetic + PIR combo",
+      "price": 78
+    },
+    {
+      "id": 41,
+      "name": "Energy Management Thermostat",
+      "description": "GRMS, remote setpoint",
+      "price": 149
+    },
+    {
+      "id": 42,
+      "name": "Smart Plug (Zigbee/GRMS)",
+      "description": "Energy monitoring, remote",
+      "price": 42
+    },
+    {
+      "id": 43,
+      "name": "PMS Interface Gateway",
+      "description": "Opera / Oracle integration",
+      "price": 2390
+    },
+    {
+      "id": 44,
+      "name": "Wireless Room Tablet Charger",
+      "description": "Flush mount inductive",
+      "price": 99
+    },
+    {
+      "id": 45,
+      "name": "GRMS Scene Controller (4-button)",
+      "description": "Welcome, sleep, reading",
+      "price": 86
+    },
+    {
+      "id": 46,
+      "name": "KNX IP Router",
+      "description": "Smart building backbone",
+      "price": 445
+    },
+    {
+      "id": 47,
+      "name": "Motorized Blinds Controller",
+      "description": "12V DC, dry contact",
+      "price": 195
+    },
+    {
+      "id": 48,
+      "name": "Smart Water Valve (1\")",
+      "description": "Leak prevention, remote",
+      "price": 179
+    },
+    {
+      "id": 49,
+      "name": "Presence Sensor (mmWave)",
+      "description": "High accuracy, lighting/HRV",
+      "price": 119
+    },
+    {
+      "id": 50,
+      "name": "Central Scene Keypad",
+      "description": "Glass touch, 6 scenes",
+      "price": 229
+    },
+    {
+      "id": 51,
+      "name": "98\" Interactive Flat Panel",
+      "description": "4K touch, built-in Android",
+      "price": 5890
+    },
+    {
+      "id": 52,
+      "name": "Audio DSP Matrix (12x8)",
+      "description": "Acoustic echo cancellation",
+      "price": 1460
+    },
+    {
+      "id": 53,
+      "name": "Ceiling Speaker (8\")",
+      "description": "100V, high SPL, AV",
+      "price": 98
+    },
+    {
+      "id": 54,
+      "name": "Dante AVIO Adapter",
+      "description": "Audio over IP, 2ch",
+      "price": 175
+    },
+    {
+      "id": 55,
+      "name": "Wireless Presentation System",
+      "description": "BYOD, 4K screen sharing",
+      "price": 795
+    },
+    {
+      "id": 56,
+      "name": "Face Recognition Terminal",
+      "description": "ELV access, mask detection",
+      "price": 495
+    },
+    {
+      "id": 57,
+      "name": "Outdoor PTZ Camera (40x zoom)",
+      "description": "Starlight, IR 200m",
+      "price": 975
+    },
+    {
+      "id": 58,
+      "name": "Fiber Media Converter (SFP)",
+      "description": "Gigabit, industrial grade",
+      "price": 79
+    },
+    {
+      "id": 59,
+      "name": "Smart UPS 3000VA (rack)",
+      "description": "LCD, extended runtime",
+      "price": 1260
+    },
+    {
+      "id": 60,
+      "name": "Visitor Management Kiosk",
+      "description": "Self check-in, badge print",
+      "price": 2350
+    },
+    {
+      "id": 61,
+      "name": "OTT Multiscreen Gateway",
+      "description": "TV everywhere, 200 concurrent",
+      "price": 5680
+    },
+    {
+      "id": 62,
+      "name": "IPTV Analytics Dashboard",
+      "description": "Viewership & insights",
+      "price": 2180
+    },
+    {
+      "id": 63,
+      "name": "ASI to IP Gateway",
+      "description": "Satellite/terrestrial headend",
+      "price": 1890
+    },
+    {
+      "id": 64,
+      "name": "Hotel IPTV CAST Dongle",
+      "description": "Airplay/Chromecast for rooms",
+      "price": 89
+    },
+    {
+      "id": 65,
+      "name": "Cat6A UTP Cable (305m box)",
+      "description": "Unshielded, 10GbE, TIA-568-C.2",
+      "price": 185
+    },
+    {
+      "id": 66,
+      "name": "Fiber Optic Cable OS2 (per 100m)",
+      "description": "Single-mode, 9/125µm, LSZH",
+      "price": 72
+    },
+    {
+      "id": 67,
+      "name": "Cat6A Keystone Patch Panel (24-port)",
+      "description": "Tool-less, 1U rackmount, labelled",
+      "price": 98
+    },
+    {
+      "id": 68,
+      "name": "42U Server Rack Cabinet",
+      "description": "800mm deep, glass door, PDU ready",
+      "price": 890
+    },
+    {
+      "id": 69,
+      "name": "Horizontal Cable Manager (2U)",
+      "description": "Double-sided, brush strips",
+      "price": 45
+    },
+    {
+      "id": 70,
+      "name": "SFP+ 10G Transceiver Module",
+      "description": "LC duplex, SM/MM, 300m",
+      "price": 38
+    },
+    {
+      "id": 71,
+      "name": "Fiber Splice Closure (48-core)",
+      "description": "Dome type, IP68, re-enterable",
+      "price": 54
+    },
+    {
+      "id": 72,
+      "name": "Perforated Cable Tray (3m section)",
+      "description": "100mm wide, hot-dip galvanized",
+      "price": 28
+    },
+    {
+      "id": 73,
+      "name": "Floor Box (4-port, Cat6A + 2x power)",
+      "description": "Flush mount, stainless lid",
+      "price": 125
+    },
+    {
+      "id": 74,
+      "name": "Velcro Cable Tie Roll (10m)",
+      "description": "Reusable, 20mm wide, black",
+      "price": 12
+    },
+    {
+      "id": 75,
+      "name": "LED Video Wall Module P2.5 (per sqm)",
+      "description": "Indoor fine pitch, 1000 nits, IP43",
+      "price": 1850
+    },
+    {
+      "id": 76,
+      "name": "LED Video Wall Module P4 (per sqm)",
+      "description": "Indoor/semi-outdoor, 1500 nits",
+      "price": 1250
+    },
+    {
+      "id": 77,
+      "name": "LED Controller Card (Nova/Linsn)",
+      "description": "Sending card, supports 2.6M pixels",
+      "price": 390
+    },
+    {
+      "id": 78,
+      "name": "LED Power Supply 5V 200A",
+      "description": "Regulated, PFC, for LED cabinets",
+      "price": 85
+    },
+    {
+      "id": 79,
+      "name": "LED Video Wall Steel Frame (per sqm)",
+      "description": "Custom welded mount, wall/floor",
+      "price": 220
+    },
+    {
+      "id": 80,
+      "name": "LED Wall Processor 4K",
+      "description": "Multi-window, HDMI/SDI/DVI inputs",
+      "price": 2200
+    },
+    {
+      "id": 81,
+      "name": "Video Conferencing Room Kit (All-in-one)",
+      "description": "4K cam, codec, mic array, remote",
+      "price": 3850
+    },
+    {
+      "id": 82,
+      "name": "PTZ Conference Camera (4K, 12x optical)",
+      "description": "USB/IP/SDI output, auto-framing",
+      "price": 1290
+    },
+    {
+      "id": 83,
+      "name": "USB Ceiling Microphone Array",
+      "description": "360° pickup, echo cancel, beamforming",
+      "price": 680
+    },
+    {
+      "id": 84,
+      "name": "USB Speakerphone (full-duplex)",
+      "description": "Omni mic, Bluetooth, conference hub",
+      "price": 220
+    },
+    {
+      "id": 85,
+      "name": "Wireless Collaboration Hub",
+      "description": "BYOD, 4K mirroring, AirPlay/Chromecast",
+      "price": 795
+    },
+    {
+      "id": 86,
+      "name": "Room Booking Panel (10\")",
+      "description": "PoE touch, MS Teams/Google ready",
+      "price": 695
+    },
+    {
+      "id": 87,
+      "name": "Addressable Fire Alarm Panel (4-loop)",
+      "description": "EN54, 2000 devices, networked",
+      "price": 2450
+    },
+    {
+      "id": 88,
+      "name": "Addressable Smoke Detector",
+      "description": "Optical, self-test, 360° indicator",
+      "price": 48
+    },
+    {
+      "id": 89,
+      "name": "Addressable Heat Detector (57°C)",
+      "description": "Fixed temp + ROR, IP21",
+      "price": 44
+    },
+    {
+      "id": 90,
+      "name": "Manual Call Point (break glass)",
+      "description": "Addressable, resettable key",
+      "price": 35
+    },
+    {
+      "id": 91,
+      "name": "Sounder Beacon (fire, flush)",
+      "description": "32 tones, red/white, IP21",
+      "price": 42
+    },
+    {
+      "id": 92,
+      "name": "Emergency Lighting Unit (3hr NiCd)",
+      "description": "Maintained/non-maintained, 8W LED",
+      "price": 68
+    },
+    {
+      "id": 93,
+      "name": "IP PA Amplifier (500W 100V line)",
+      "description": "Rack, 8-zone, fire input, priority",
+      "price": 1150
+    },
+    {
+      "id": 94,
+      "name": "Ceiling PA Speaker (10W, 100V)",
+      "description": "Round, white, fire-rated tile",
+      "price": 38
+    },
+    {
+      "id": 95,
+      "name": "Horn Speaker (30W, IP65, outdoor)",
+      "description": "Weather-proof, 100V line",
+      "price": 65
+    },
+    {
+      "id": 96,
+      "name": "Paging Microphone Station",
+      "description": "Priority override, zone select",
+      "price": 280
+    },
+    {
+      "id": 97,
+      "name": "Gas Detector (CO + LPG combo)",
+      "description": "4-20mA, relay output, ATEX zone",
+      "price": 195
+    },
+    {
+      "id": 98,
+      "name": "IP Desktop Phone (PoE, HD audio)",
+      "description": "2 SIP lines, colour display, BLF",
+      "price": 95
+    },
+    {
+      "id": 99,
+      "name": "VoIP PBX Gateway (8 FXO ports)",
+      "description": "Analog trunk, SIP trunking",
+      "price": 485
+    },
+    {
+      "id": 100,
+      "name": "IP Video Door Phone (2MP)",
+      "description": "PoE, SIP, door release relay",
+      "price": 320
+    },
+    {
+      "id": 101,
+      "name": "IP Nurse Call Master Station",
+      "description": "LED display, 64 zones, timed response",
+      "price": 1890
+    },
+    {
+      "id": 102,
+      "name": "Nurse Call Patient Handset",
+      "description": "2-way audio, call/cancel, IP42",
+      "price": 88
+    },
+    {
+      "id": 103,
+      "name": "IP DECT Cordless Phone System",
+      "description": "Base + handset, 50m indoor range",
+      "price": 285
+    },
+    {
+      "id": 104,
+      "name": "Building Automation Controller (BACnet)",
+      "description": "32 I/O, Modbus/BACnet/IP",
+      "price": 1650
+    },
+    {
+      "id": 105,
+      "name": "EV Charging Station (Type 2, 7.4kW)",
+      "description": "Smart, OCPP 1.6, app-controlled",
+      "price": 1290
+    },
+    {
+      "id": 106,
+      "name": "3-Phase Smart Energy Meter",
+      "description": "Modbus RTU, class 1, DIN rail",
+      "price": 145
+    },
+    {
+      "id": 107,
+      "name": "Solar Monitoring Gateway",
+      "description": "Supports 50 inverters, cloud dashboard",
+      "price": 480
+    },
+    {
+      "id": 108,
+      "name": "Automatic Transfer Switch (100A)",
+      "description": "Generator/mains, 4-pole, motorized",
+      "price": 620
+    },
+    {
+      "id": 109,
+      "name": "Power Distribution Unit (PDU, 16A, 12-way)",
+      "description": "Rackmount, metered, C13/C19",
+      "price": 185
+    },
+    {
+      "id": 110,
+      "name": "Installation Labor (2-man team, per day)",
+      "description": "Tools, transport, site safety",
+      "price": 380
+    },
+    {
+      "id": 111,
+      "name": "Site Survey & System Design",
+      "description": "Floor plans, BOQ, SLD, CAD drawings",
+      "price": 750
+    },
+    {
+      "id": 112,
+      "name": "Project Management (per week)",
+      "description": "PM, coordination, progress reports",
+      "price": 650
+    },
+    {
+      "id": 113,
+      "name": "System Commissioning & Testing",
+      "description": "Full functional test, snag list, sign-off",
+      "price": 490
+    },
+    {
+      "id": 114,
+      "name": "Technical Training (per session, 8hr)",
+      "description": "Operator/admin, hands-on, certificate",
+      "price": 350
+    },
+    {
+      "id": 115,
+      "name": "Annual Maintenance Contract (AMC)",
+      "description": "2 PPM visits + 24hr support response",
+      "price": 1200
+    },
+    {
+      "id": 116,
+      "name": "Remote Monitoring Service (per month)",
+      "description": "NOC, alerts, uptime reports",
+      "price": 180
+    },
+    {
+      "id": 117,
+      "name": "Warranty Extension (2 years)",
+      "description": "Parts + labor, next business day",
+      "price": 420
+    },
+    {
+      "id": 118,
+      "name": "Cable Testing & Certification (per point)",
+      "description": "Fluke test, PDF report, ISO/TIA cert",
+      "price": 12
+    },
+    {
+      "id": 119,
+      "name": "Rack Installation & Cable Dressing",
+      "description": "Per rack, full labelling & management",
+      "price": 320
+    },
+    {
+      "id": 120,
+      "name": "As-Built Documentation Package",
+      "description": "CAD, O&M manuals, warranties, handover",
+      "price": 580
+    }
+  ],
+  "invoices": [],
+  "pushedAt": "2026-06-03T12:49:26.265Z"
+}
